@@ -4,19 +4,17 @@
       title="名前"
       placeholder="名前を入力してください"
       :prop-value.sync="postObject.name"
-      @input="setName"
+      @update:propValue="setName"
     />
     <RowSet
       title="電話番号"
       placeholder="090-1234-5678"
       :prop-value.sync="postObject.tel"
-      @input="setTel"
     />
     <RowSet
       title="住所"
       placeholder="東京都港区2-2-2"
       :prop-value.sync="postObject.address"
-      @input="setAddress"
     />
   </table>
 </template>
@@ -38,7 +36,7 @@ export default {
   },
   methods: {
     setName(value) {
-      this.postObject.name = value;
+      console.log(value);
     },
     setTel(value) {
       this.postObject.tel = value;

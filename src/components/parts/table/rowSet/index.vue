@@ -2,7 +2,13 @@
   <tr>
     <td>{{ title }}</td>
     <td>
-      <input type="text" :placeholder="placeholder" v-model="inputValue" />
+      <!-- v-modelは「:value="text" @input="text = $event.target.value" -->
+      <input
+        type="text"
+        :placeholder="placeholder"
+        :value="propValue"
+        @input="$emit('update:propValue', $event.target.value)"
+      />
     </td>
   </tr>
 </template>
@@ -22,17 +28,17 @@ export default {
       type: String,
       required: true
     }
-  },
-  computed: {
-    inputValue: {
-      get() {
-        return this.$props.propValue;
-      },
-      set(value) {
-        this.$emit('input', value);
-      }
-    }
   }
+  // computed: {
+  //   inputValue: {
+  //     get() {
+  //       return this.$props.propValue;
+  //     },
+  //     set(value) {
+  //       this.$emit('input', value);
+  //     }
+  //   }
+  // }
 };
 </script>
 
